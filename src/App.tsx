@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { CustomizerLayout } from './components/CustomizerLayout';
@@ -111,13 +111,9 @@ function AppContent() {
 }
 
 export default function App() {
-  const isShopifyCustomizer = detectShopifyContext();
-useEffect(() => {
-  document.documentElement.style.scrollbarWidth = 'none';
-  return () => {
-    document.documentElement.style.scrollbarWidth = 'auto';
-  };
-}, []);
+  // DO NOT hide scrollbar here - let app scroll naturally
+  // The Liquid template in Shopify will handle hiding the scrollbar with CSS
+  
   return (
     <ErrorBoundary>
       <FirebaseProvider>
