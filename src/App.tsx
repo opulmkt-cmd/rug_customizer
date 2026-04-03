@@ -112,7 +112,12 @@ function AppContent() {
 
 export default function App() {
   const isShopifyCustomizer = detectShopifyContext();
-
+useEffect(() => {
+  document.documentElement.style.scrollbarWidth = 'none';
+  return () => {
+    document.documentElement.style.scrollbarWidth = 'auto';
+  };
+}, []);
   return (
     <ErrorBoundary>
       <FirebaseProvider>
