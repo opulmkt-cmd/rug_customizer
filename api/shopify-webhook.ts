@@ -16,10 +16,10 @@ async function verifyShopifyWebhook(req: VercelRequest, rawBody: Buffer) {
   const hmacHeader = req.headers['x-shopify-hmac-sha256'];
   if (!hmacHeader || Array.isArray(hmacHeader)) return false;
 
-  const digest = crypto
-    .createHmac('sha256', secret)
-    .update(rawBody, 'utf8')
-    .digest('base64');
+ const digest = crypto
+  .createHmac('sha256', secret)
+  .update(rawBody)
+  .digest('base64');
 
   const digestBuffer = Buffer.from(digest, 'utf8');
   const headerBuffer = Buffer.from(hmacHeader, 'utf8');
