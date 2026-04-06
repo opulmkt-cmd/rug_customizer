@@ -50,7 +50,10 @@ export const RugVisualizerPage: React.FC = () => {
   const [showPlanSelection, setShowPlanSelection] = useState(false);
   const [pendingGeneration, setPendingGeneration] = useState(false);
 
-  const ai = useMemo(() => new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! }), []);
+  const ai = useMemo(() => new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY
+});
+
+  
 
   const hasLoadedInitial = React.useRef(false);
 
